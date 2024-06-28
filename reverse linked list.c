@@ -31,7 +31,7 @@ struct Node *Linkedlist(int arr[],int size)
     return head;
 
 }
-void reverseLinkedlist(struct Node *newhead)
+struct Node *reverseLinkedlist(struct Node *head)
 {
 
     struct Node *previous=NULL,*current=head,*next=NULL;
@@ -43,11 +43,16 @@ void reverseLinkedlist(struct Node *newhead)
         current=next;
     }
 
-    head=previous;
-    while(head!=NULL)
+   return previous;
+
+
+}
+void printLinkedList (struct Node *head){
+
+while(head!=NULL)
     {
-        printf("%d -> ",current->data);
-        current=current->next;
+        printf("%d -> ",head->data);
+        head=head->next;
 
 
     }
@@ -75,22 +80,19 @@ int main()
     head=Linkedlist(a,size);
 
 
-    struct Node *newhead=head;
-
-
-    printf("\n\n");
-    while(head!=NULL)
-    {
-        printf("%d -> ",head->data);
-        head=head->next;
-
-
-    }
-    printf("NULL\n");
+printf("original linked list : \n");
+printLinkedList(head);
 
 
 
-    reverseLinkedlist(newhead);
+
+
+
+   head = reverseLinkedlist(head);
+
+
+   printf("Reverse linked list : \n");
+printLinkedList(head);
 
     return 0;
 
